@@ -28,7 +28,8 @@ export default {
 <template>
   <h1>My ToDo App</h1>
   <input type="text" /><button>追加</button><button>完了済みを削除する</button>
-  <ul>
+  <p v-if="todos.length === 0">ToDoがまだありません！</p>
+  <ul v-else>
     <li v-for="todo in todos" :key="todo.id">
       <input type="checkbox" /><span>{{ todo.text }}</span>
     </li>

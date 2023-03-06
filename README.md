@@ -55,6 +55,7 @@ export default {
 
 ## サーバー起動
 
+`vue-todo-project`ディレクトリで、
 `yarn dev`
 
 ## サーバー停止
