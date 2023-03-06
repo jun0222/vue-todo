@@ -1,9 +1,27 @@
 <script>
 export default {
+  methods: {},
   data() {
-    return {}
-  },
-  methods: {}
+    return {
+      todos: [
+        {
+          id: 1,
+          isDone: true,
+          text: 'Vueをマスターする'
+        },
+        {
+          id: 2,
+          isDone: false,
+          text: '牛乳を買う'
+        },
+        {
+          id: 3,
+          isDone: false,
+          text: '家賃を払う'
+        }
+      ]
+    }
+  }
 }
 </script>
 
@@ -11,9 +29,9 @@ export default {
   <h1>My ToDo App</h1>
   <input type="text" /><button>追加</button><button>完了済みを削除する</button>
   <ul>
-    <li><input type="checkbox" checked /><span class="todo-done">Vueをマスターする</span></li>
-    <li><input type="checkbox" /><span>牛乳を買う</span></li>
-    <li><input type="checkbox" /><span>家賃を払う</span></li>
+    <li v-for="todo in todos" :key="todo.id">
+      <input type="checkbox" /><span>{{ todo.text }}</span>
+    </li>
   </ul>
 </template>
 
