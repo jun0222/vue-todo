@@ -14,6 +14,9 @@ export default {
         text: this.newTodoText
       }),
         (this.newTodoText = '')
+    },
+    clearDoneTodos() {
+      this.todos = this.todos.filter((todo) => !todo.isDone)
     }
   }
 }
@@ -26,7 +29,9 @@ export default {
   <p v-if="todos.length === 0">ToDoがまだありません！</p>
   <ul v-else>
     <li v-for="todo in todos" :key="todo.id">
-      <input type="checkbox" /><span>{{ todo.text }}</span>
+      <input type="checkbox" v-model="todo.isDone" /><span :class="{ 'todo-done': todo.isDone }">{{
+        todo.text
+      }}</span>
     </li>
   </ul>
 </template>

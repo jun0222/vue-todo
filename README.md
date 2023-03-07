@@ -79,6 +79,39 @@ export default {
 
 ## Update
 
+```vue
+<script>
+export default {
+  data() {
+    return {
+      newTodoText: "",
+      todos: [],
+    };
+  },
+  methods: {
+    clearDoneTodos() {
+      this.todos = this.todos.filter((todo) => !todo.isDone);
+    },
+  },
+};
+</script>
+
+<template>
+  <h1>My ToDo App</h1>
+  <input type="text" v-model="newTodoText" /><button @click="addTodo">
+    追加
+  </button>
+  <ul>
+    <li v-for="todo in todos" :key="todo.id">
+      <input type="checkbox" v-model="todo.isDone" /><span
+        :class="{ 'todo-done': todo.isDone }"
+        >{{ todo.text }}</span
+      >
+    </li>
+  </ul>
+</template>
+```
+
 ## Delete
 
 # コマンド
