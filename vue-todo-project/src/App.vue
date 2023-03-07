@@ -1,25 +1,19 @@
 <script>
 export default {
-  methods: {},
   data() {
     return {
-      todos: [
-        {
-          id: 1,
-          isDone: true,
-          text: 'Vueをマスターする'
-        },
-        {
-          id: 2,
-          isDone: false,
-          text: '牛乳を買う'
-        },
-        {
-          id: 3,
-          isDone: false,
-          text: '家賃を払う'
-        }
-      ]
+      newTodoText: '',
+      todos: []
+    }
+  },
+  methods: {
+    addTodo() {
+      if (!this.newTodoText) return alert('文字を入力してください')
+      this.todos.push({
+        isDone: false,
+        text: this.newTodoText
+      }),
+        (this.newTodoText = '')
     }
   }
 }
@@ -27,7 +21,8 @@ export default {
 
 <template>
   <h1>My ToDo App</h1>
-  <input type="text" /><button>追加</button><button>完了済みを削除する</button>
+  <input type="text" v-model="newTodoText" /><button @click="addTodo">追加</button>
+  <button>完了済みを削除する</button>
   <p v-if="todos.length === 0">ToDoがまだありません！</p>
   <ul v-else>
     <li v-for="todo in todos" :key="todo.id">
