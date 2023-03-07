@@ -88,11 +88,6 @@ export default {
       todos: [],
     };
   },
-  methods: {
-    clearDoneTodos() {
-      this.todos = this.todos.filter((todo) => !todo.isDone);
-    },
-  },
 };
 </script>
 
@@ -113,6 +108,40 @@ export default {
 ```
 
 ## Delete
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      newTodoText: "",
+      todos: [],
+    };
+  },
+  methods: {
+    clearDoneTodos() {
+      this.todos = this.todos.filter((todo) => !todo.isDone);
+    },
+  },
+};
+</script>
+
+<template>
+  <h1>My ToDo App</h1>
+  <input type="text" v-model="newTodoText" /><button @click="addTodo">
+    追加
+  </button>
+  <button @click="clearDoneTodos">完了済みを削除する</button>
+  <ul>
+    <li v-for="todo in todos" :key="todo.id">
+      <input type="checkbox" v-model="todo.isDone" /><span
+        :class="{ 'todo-done': todo.isDone }"
+        >{{ todo.text }}</span
+      >
+    </li>
+  </ul>
+</template>
+```
 
 # コマンド
 

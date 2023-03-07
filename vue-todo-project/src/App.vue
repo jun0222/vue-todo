@@ -25,7 +25,7 @@ export default {
 <template>
   <h1>My ToDo App</h1>
   <input type="text" v-model="newTodoText" /><button @click="addTodo">追加</button>
-  <button>完了済みを削除する</button>
+  <button @click="clearDoneTodos">完了済みを削除する</button>
   <p v-if="todos.length === 0">ToDoがまだありません！</p>
   <ul v-else>
     <li v-for="todo in todos" :key="todo.id">
